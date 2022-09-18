@@ -42,7 +42,8 @@ class ArtificialIntelligence:
             if posO != 0:
                 return self.go(posO)
             else:
-                return self.go(posX) if (posX != 0) else self.go(self.make_two(cells))
+                print(self.go(self.make_two(cells)))
+                return self.go(posX) if posX != 0 else self.go(self.make_two(cells))
         elif turn == 7:
             if posX != 0:
                 return self.go(posX)
