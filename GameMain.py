@@ -18,7 +18,6 @@ class GameMain(Frame):
     canvas: Canvas
     current_player: Seed
     TITLE: str = "TicTacToe"
-    COLOR_BG_STATUS = 'gray'
     STATUS_BAR_HEIGHT = 50
     STATUS_BAR_OFFSET = STATUS_BAR_HEIGHT / 2
 

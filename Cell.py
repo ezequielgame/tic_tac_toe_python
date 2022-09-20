@@ -1,5 +1,3 @@
-import re
-from turtle import color, width
 from Seed import Seed
 """
 The Cell class models each individual cell of the game board.
@@ -14,14 +12,14 @@ class Cell:
     PADDING: float = SIZE / 5
     SEED_SIZE: float = SIZE - PADDING * 2
     SEED_STROKE_WIDTH: int = 8
-    COLOR_CROSS = 'red'
+    COLOR_CROSS: str = 'red'
     COLOR_NOUGHT = 'blue'
 
     content: Seed
     row: int
     col: int
 
-    def __init__(self, row: int = None, col: int = None) -> None:
+    def __init__(self, row: int = 0, col: int = 0) -> None:
         """
         Constructor to initialize this cell with the specified row and col
 
@@ -44,14 +42,17 @@ class Cell:
         x2 = int((self.col + 1) * self.SIZE - self.PADDING)
         y2 = int((self.row + 1) * self.SIZE - self.PADDING)
         if self.content == Seed.CROSS:
+            # Pintar X
             canvas.create_line(
                 x1, y1, x2, y2, fill=self.COLOR_CROSS, width=self.SEED_STROKE_WIDTH)
             canvas.create_line(
                 x2, y1, x1, y2, fill=self.COLOR_CROSS, width=self.SEED_STROKE_WIDTH)
         elif self.content == Seed.NOUGHT:
+            # Pintar donita
             canvas.create_oval(
                 x1, y1, x2, y2, outline=self.COLOR_NOUGHT, width=self.SEED_STROKE_WIDTH)
 
+    # to string
     def __str__(self) -> str:
         if self.content == Seed.NOUGHT:
             return 'O'
