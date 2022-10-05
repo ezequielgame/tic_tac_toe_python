@@ -17,6 +17,7 @@ class GameMain(Frame):
     ia_symbol: Seed
     canvas: Canvas
     current_player: Seed
+    
     TITLE: str = "TicTacToe"
     STATUS_BAR_HEIGHT = 50
     STATUS_BAR_OFFSET = STATUS_BAR_HEIGHT / 2
@@ -34,7 +35,7 @@ class GameMain(Frame):
         self.master.title(self.TITLE)
         self.pack(fill=BOTH, expand=1)
         self.canvas = Canvas(self)
-        self.canvas.pack(fill=BOTH, expand=1)
+        self.canvas.pack(fill=BOTH, expand=1)        
         self.board.paint(self.canvas)
         self.canvas.bind("<Button-1>", self.play_move)
 

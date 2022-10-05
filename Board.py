@@ -116,13 +116,11 @@ class Board:
                                 fill=self.COLOR_GRID, width=self.GRID_WIDTH)
         for row in self.cells:
             for cell in row:
-                cell.paint(canvas)
+                self.seeds += cell.paint(canvas)
         self.message = canvas.create_text(Board.CANVAS_WIDTH / 2, Board.CANVAS_HEIGHT + self.STATUS_BAR_OFFSET, fill="darkblue",text=msg)
                 
     def clean(self, canvas):
-        # el id del objeto tkinter creado (X O)
-        for seed_id in self.seeds:
-            canvas.delete(seed_id) # Eliminas del canvas
+        # el id del objeto tkinter creado
         canvas.delete(self.message) # Eliminas el mensaje
         
     def repaint(self, canvas, msg='Click to play'):

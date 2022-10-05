@@ -45,7 +45,6 @@ class ArtificialIntelligence:
             if poss_win_o != 0:
                 return go(poss_win_o)
             else:
-                print(go(make_two(cells)))
                 return go(poss_win_x) if poss_win_x != 0 else go(make_two(cells))
         elif turn == 7:
             if poss_win_x != 0:
@@ -74,12 +73,20 @@ def make_two(cells) -> int:
         return 5
     else:
         # Combinaciones de aristas y esquinas opuestas (donde_puedo_tirar, opuesta_esta_vacia?)
-        combs = [(2,8),(8,2),(4,6),(6,4),(1,9),(9,1),(3,7),(7,3)]
+        combs = [(2,8),(8,2),(4,6),(6,4),(9,1),(1,9),(3,7),(7,3)]
         # Trata de juntar 2, para esto, la tercer casilla, es decir, la opuesta, tampoco debe tener nada
         # de esta manera obliga al otro jugador a tapar en el siguiente turno.
         for comb in combs:
             if get_content(cells, comb[0]) == Seed.NO_SEED and get_content(cells,comb[1]) == Seed.NO_SEED:
-                return comb[0]
+                row, col = number_to_coords(comb[0])
+                if comb[0] % 2 != 0:
+                    for i in range(3):
+                        if cells[row][i].content == Seed.CROSS:
+                            return comb[0]
+                        if cells[i][col].content == Seed.CROSS:
+                            return comb[1]
+                elif cells[1][1].content != Seed.CROSS:
+                    return comb[0]
     return -1
 
 def poss_win(player, cells) -> int:
