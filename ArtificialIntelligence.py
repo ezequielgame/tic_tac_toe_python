@@ -32,11 +32,11 @@ class ArtificialIntelligence:
         elif turn == 4:
             return go(poss_win_x) if poss_win_x != 0 else go(make_two(cells))
         elif turn == 5:
-            if poss_win_x != 0:
-                return go(poss_win_x)
+            if poss_win_o != 0:
+                return go(poss_win_o)
             else:
-                if poss_win_o != 0:
-                    return go(poss_win_o)
+                if poss_win_x != 0:
+                    return go(poss_win_x)
                 elif cells[2][0].content == Seed.NO_SEED:
                     return go(7)
                 else:
@@ -47,10 +47,10 @@ class ArtificialIntelligence:
             else:
                 return go(poss_win_x) if poss_win_x != 0 else go(make_two(cells))
         elif turn == 7:
-            if poss_win_x != 0:
-                return go(poss_win_x)
+            if poss_win_o != 0:
+                return go(poss_win_o)
             else:
-                return go(poss_win_o) if poss_win_o != 0 else get_blank_space_coords(cells)
+                return go(poss_win_x) if poss_win_x != 0 else get_blank_space_coords(cells)
         elif turn == 8:
             if poss_win_o != 0:
                 return go(poss_win_o)
@@ -60,10 +60,10 @@ class ArtificialIntelligence:
                 else:
                     return get_blank_space_coords(cells)
         elif turn == 9:
-            if poss_win_x != 0:
-                return go(poss_win_x)
+            if poss_win_o != 0:
+                return go(poss_win_o)
             else:
-                return go(poss_win_o) if poss_win_o != 0 else get_blank_space_coords(cells)
+                return go(poss_win_x) if poss_win_x != 0 else get_blank_space_coords(cells)
         else:
             return -1, -1
 
